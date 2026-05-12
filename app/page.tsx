@@ -5,7 +5,6 @@ import FeatureSection from "@/features/pricing/components/FeatureSection";
 import FinalCtaSection from "@/features/pricing/components/FinalCtaSection";
 import HeroPricing from "@/features/pricing/components/HeroPricing";
 import PricingSection from "@/features/pricing/components/PricingSection";
-import SiteFooter from "@/features/pricing/components/SiteFooter";
 import TestimonialShowcase from "@/features/pricing/components/TestimonialShowcase";
 import { PRICING_TESTIMONIAL_VIDEOS } from "@/features/pricing/utils/testimonialVideos";
 
