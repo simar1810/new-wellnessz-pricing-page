@@ -36,17 +36,16 @@ export const features = [
     imageSide: "right",
   },
   {
-    kicker: "Appointment Booking",
-    title: "Manage Client Sessions Without Back-and-Forth",
+    kicker: "GET LISTED ON ZEEFIT",
+    title: "Earn with Zeefit",
     description: [
-      "Let clients book sessions easily while you manage your schedule, online meetings, and follow-ups in one place.",
+      "Recommend trusted wellness products to your clients, get listed on Zeefit, and earn commission on every successful sale.",
     ],
     subFeatures: [
-      "Appointment booking",
-      "Online session scheduling",
-      "Session reminders",
-      "Calendar management",
-      "Offline attendance tracking",
+      "Get listed on Zeefit",
+      "Sell affiliate products",
+      "Earn commission from recommendations",
+      "Create an extra income stream",
     ],
     imageSide: "left",
   },
@@ -72,13 +71,13 @@ export const plans = [
   {
     id: 1,
     code: "basic",
-    title: "BASIC",
+    title: "Basic Plan",
     description:
       "For solo coaches starting structured coaching. Run your coaching practice cleanly without advanced automation.",
     bestFor:
       "Coaches with under 40 clients who still manage most follow-ups manually.",
     features: [
-      "Up to 40 active clients",
+      "Up to 40 clients",
       "Create meal plans",
       "Create workout sessions using the library",
       "Appointment booking",
@@ -86,11 +85,11 @@ export const plans = [
       "Group challenges",
       "Activity tracker",
       "Client progress tracking",
-      "Access to food database for easier meal planning",
+      "Access to 28,000+ ICMR & NIN-verified food database",
       "Group nudges only",
     ],
     buttonText: (renewal) =>
-      renewal ? "Renew Now" : "Start your 14-day free trial",
+      renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
       months === 12 ? "Billed yearly" : "Billed monthly",
     originalPrice: (months, currency) => {
@@ -119,26 +118,28 @@ export const plans = [
   {
     id: 2,
     code: "pro",
-    title: "PRO",
+    title: "Pro Plan",
     badge: "Most Popular",
     description:
       "For full-time coaches scaling beyond manual effort. Built for personalization, accuracy, and higher client volume.",
     bestFor:
       "Coaches managing 40+ clients who want to save time and scale without burnout.",
     features: [
-      "Everything in Basic Plan",
-      "Up to 120 active clients",
-      "Personalized habit-based nudges per client",
-      "AI-powered health journaling",
-      "Access to 28,000+ ICMR & NIN verified food database",
-      "Advanced calorie and macro tracking",
-      "Pre-built condition-based meal plans",
-      "Pre-built goal-based workout plans",
+      "Everything in the Basic Plan",
+      "Up to 120 clients",
+      "Add your own recipes",
+      "Workout session analytics",
+      "In-app feed",
+      "Health Metric Pro",
+      "AI Health Agent Jia",
       "Offline attendance tracking",
-      "Team management for assistants or junior coaches",
+      "Personalized habit-based nudges for each client",
+      "AI-powered health journaling",
+      "Access to 28,000+ ICMR & NIN-verified food database",
+      "Advanced calorie and macro tracking using TD Calculator",
     ],
     buttonText: (renewal) =>
-      renewal ? "Renew Now" : "Start your 14-day free trial",
+      renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
       months === 12 ? "Billed yearly" : "Billed monthly",
     originalPrice: (months, currency) => {
@@ -167,7 +168,7 @@ export const plans = [
   {
     id: 3,
     code: "iosBranded",
-    title: "OWN YOUR COACHING APP",
+    title: "Branded App",
     description:
       "For established coaches building a long-term brand.",
     bestFor:
@@ -175,17 +176,15 @@ export const plans = [
     positioningLine:
       "This is not an app upgrade. This is ownership of your coaching business.",
     buttonText: (renewal) =>
-      renewal ? "Renew Now" : "Start your 14-day free trial",
+      renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
       months === 12 ? "Billed yearly" : "Billed monthly",
     features: [
       "All Pro plan features",
-      "Your app name on Play Store / App Store",
+      "Your app published on the Play Store / App Store",
       "Your logo, colors, and brand identity",
-      "Zero WellnessZ branding for clients",
-      "Complete web panel",
-      "Higher client trust and retention",
-      "Strong switching cost for clients",
+      "Powered by WellnessZ branding for clients",
+      "Zee Coach listing on the Zeefit marketplace to get more leads",
     ],
     discountedPrice: (months, currency, discountPercentage = 0) => {
       const d = Number(discountPercentage) || 0;
@@ -217,15 +216,19 @@ export const enterprisePlan = {
   code: "enterprise",
   title: "ENTERPRISE PLAN",
   description:
-    "For clinics, large coaching teams, and high-volume practices.",
+    "For organizations that need scale, advanced control, and custom workflows.",
   bestFor:
     "Organizations managing large client volumes, multiple coaches, and custom workflows.",
   features: [
-    "Nutrition clinics with multiple dietitians",
-    "Coaching brands managing 200+ active clients",
+    "Gyms & fitness studios",
     "Corporate wellness providers",
-    "Hybrid online + offline practices",
-    "Coaches needing custom integrations or workflows",
+    "Brands needing custom integrations and workflows",
+    "Suited for franchises",
+  ],
+  deliverables: [
+    "Personal branding and customization",
+    "Unlimited clients",
+    "Full admin dashboard for team management and client management",
   ],
   buttonText: () => "Contact Sales",
   billingText: () => "",

@@ -29,8 +29,8 @@ function Container() {
 
   return (
     <div>
-      <div id="pricing-plans" className="scroll-mt-6 md:scroll-mt-10">
-        <div className="px-2 pb-6 text-center md:px-0 md:pb-10">
+      <div id="pricing-plans" className="mt-10 scroll-mt-6 md:scroll-mt-10">
+        <div className="px-2 max-md:pb-6 text-center md:px-0">
           <h2 className="text-3xl font-bold tracking-tight text-[#0F1F26] md:text-4xl">
             Choose the plan that fits your coaching business
           </h2>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { featureQuickLinks, features } from "../utils/config";
+import { features } from "../utils/config";
 import { cn } from "@/lib/utils";
 
 /** Same Brand feature art as experts pricing (`/experts/pricing`). */
@@ -48,18 +48,13 @@ function FeatureVisual({ index }) {
 export default function FeatureSection() {
   return (
     <section className="w-full bg-[#f4f6f8]">
-      <div className="relative mx-auto max-w-[1200px] space-y-8 px-4 py-6 md:space-y-0 md:px-6 md:py-0 md:pb-10">
+      <div className="relative mx-auto max-w-[1200px] space-y-8 px-4 md:space-y-0 md:px-6 md:py-0 md:pb-16">
         {features.map((feature, index) => {
           const isReversed = feature.imageSide === "right";
-          const isLast = index === features.length - 1;
-          /* Last row must not be sticky — otherwise it stays above the quick-links block (higher z-index). */
           return (
             <div
               key={feature.title}
-              className={cn(
-                "flex min-h-0 items-stretch py-3 md:items-center md:py-8",
-                !isLast && "md:sticky md:top-0 md:min-h-screen",
-              )}
+              className="md:sticky md:top-0 flex min-h-0 items-stretch py-3 md:min-h-screen md:items-center md:py-8"
               style={{ zIndex: index + 1 }}
             >
               <div
@@ -115,7 +110,7 @@ export default function FeatureSection() {
                       {feature.subFeatures.map((sub) => (
                         <li
                           key={sub}
-                          className="flex items-center gap-3 rounded-xl border border-[#e8f5e9] bg-gradient-to-r from-[#f1f8e9]/80 to-white px-3.5 py-2.5 text-sm font-medium text-gray-800 shadow-sm transition hover:border-[#c8e6c9] md:py-3 md:text-[15px]"
+                          className="flex items-center gap-3 rounded-xl border border-[#e8f5e9] bg-linear-to-r from-[#f1f8e9]/80 to-white px-3.5 py-2.5 text-sm font-medium text-gray-800 shadow-sm transition hover:border-[#c8e6c9] md:py-3 md:text-[15px]"
                         >
                           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#2e7d32] text-white">
                             <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
@@ -135,7 +130,7 @@ export default function FeatureSection() {
                           href="#pricing-plans"
                           className="inline-flex items-center gap-2"
                         >
-                          Start free trial
+                          Start 14-day free trial
                           <ArrowRight className="h-4 w-4 opacity-90" />
                         </a>
                       </Button>
@@ -147,21 +142,6 @@ export default function FeatureSection() {
           );
         })}
 
-        <div className="relative z-20 bg-[#f4f6f8] pb-12 pt-8 md:pb-16 md:pt-12">
-          <h3 className="text-center text-lg font-bold text-gray-900 md:text-xl">
-            Everything you need to run your practice
-          </h3>
-          <ul className="mx-auto mt-6 grid max-w-[1000px] grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4">
-            {featureQuickLinks.map((label) => (
-              <li
-                key={label}
-                className="rounded-xl border border-[#e0e0e0] bg-white px-3 py-3 text-center text-xs font-semibold text-gray-800 shadow-sm md:text-sm"
-              >
-                {label}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );

@@ -171,7 +171,7 @@ export default function TestimonialShowcase({
             "h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] md:h-12 md:text-base",
           )}
         >
-          Start your 14-day free trial
+          Start 14-day free trial
         </Link>
         <Link
           href={testimonialsHref}
