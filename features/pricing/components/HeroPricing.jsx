@@ -57,8 +57,7 @@ const HeroPricing = function () {
         />
         <div className="relative z-1 flex h-[60vh] -translate-y-8 flex-col items-center justify-center leading-tight md:h-[75vh] md:-translate-y-14">
           <h1 className="max-w-[22ch] px-2 text-[26px] font-bold tracking-tight md:max-w-[32ch] md:text-[44px] lg:text-[52px]">
-            India&apos;s leading healthtech platform for Health &amp; Wellness
-            Professionals
+            India&apos;s leading client management platform for Health &amp; Wellness Professionals
           </h1>
           <p className="mx-auto mb-5 mt-4 max-w-[60ch] px-2 text-sm text-white/90 md:mb-6 md:mt-6 md:max-w-[70ch] md:text-lg">
             Manage diet plans, client progress, appointments, reminders, and
@@ -70,7 +69,7 @@ const HeroPricing = function () {
             for dietitians, fitness trainers &amp; wellness coaches
           </div>
 
-          <ul
+          {/* <ul
             className="mb-6 flex max-w-4xl flex-wrap justify-center gap-2 px-3 md:mb-8"
             aria-label="Platform highlights"
           >
@@ -81,13 +80,13 @@ const HeroPricing = function () {
                 </span>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <a
             href="#pricing-plans"
             className={cn(
               buttonVariants({ variant: "default", size: "default" }),
-              "h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base",
+              "mb-12 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base",
             )}
           >
             Start your 14-day free trial
