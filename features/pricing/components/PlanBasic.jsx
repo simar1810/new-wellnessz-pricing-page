@@ -24,7 +24,7 @@ export default function PlanBasic({ plan, months = 1, emphasized = false }) {
       : "Upgrade Now"
     : typeof plan.buttonText === "function"
       ? plan.buttonText(false)
-      : "Start your 14 day free trial";
+      : "Start 14 day free trial";
 
   const currencySymbol = getCurrencySymbol();
   const originalRaw = plan.originalPrice?.(months, currency);

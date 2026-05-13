@@ -14,7 +14,7 @@ export default function PlanEnterprise({ plan }) {
     <article
       className={cn(
         "w-full cursor-pointer select-none overflow-hidden rounded-[40px] p-10 transition-all duration-300",
-        "bg-gradient-to-r from-[#2D5A27] via-[#438439] to-[#67BC2A]",
+        "bg-linear-to-r from-[#2D5A27] via-[#438439] to-[#67BC2A]",
         selectedPlanCode === plan.code
           ? "ring-4 ring-white shadow-2xl"
           : "hover:shadow-xl",
@@ -35,19 +35,41 @@ export default function PlanEnterprise({ plan }) {
         </div>
 
         <div className="flex-[1.5]">
-          <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/80">
-            Who this is for
-          </p>
-          <ul className="grid grid-cols-1 gap-x-8 gap-y-3 md:grid-cols-2">
-            {plan.features.map((feature, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
-                <span className="text-base font-medium leading-tight text-white md:text-[17px]">
-                  {feature}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/80">
+                Who this is for
+              </p>
+              <ul className="grid grid-cols-1 gap-y-3">
+                {plan.features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
+                    <span className="text-base font-medium leading-tight text-white md:text-[17px]">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {Array.isArray(plan.deliverables) && plan.deliverables.length > 0 ? (
+              <div>
+                <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/80">
+                  What will you get
+                </p>
+                <ul className="grid grid-cols-1 gap-y-3">
+                  {plan.deliverables.map((item, index) => (
+                    <li key={index} className="flex items-center gap-3">
+                      <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
+                      <span className="text-base font-medium leading-tight text-white md:text-[17px]">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
           {plan.bestFor ? (
             <p className="mt-6 max-w-xl text-sm font-semibold leading-snug text-white/85">
               Best for: {plan.bestFor}

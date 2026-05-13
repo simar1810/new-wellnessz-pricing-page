@@ -11,7 +11,7 @@ export default function PlanDurationSelection() {
   };
 
   return (
-    <div className="relative mb-8 mt-4 md:mt-8">
+    <div className="relative mb-12 mt-4 md:mt-8">
       <div className="relative mx-auto flex w-fit items-center justify-center gap-2 rounded-full bg-white py-1.5 font-semibold">
         <button
           type="button"
