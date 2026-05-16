@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   title: "WellnessZ — Pricing",
   description:
     "India's leading healthtech platform for health and wellness professionals. Diet plans, client progress, appointments, and reports in one place.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
