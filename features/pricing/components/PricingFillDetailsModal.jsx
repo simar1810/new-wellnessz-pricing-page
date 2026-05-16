@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Loader2 } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
@@ -31,6 +32,11 @@ export default function PricingFillDetailsModal({
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const isIndianPricing = currency === "INR";
   const defaultCountry = currency === "USD" ? "US" : "IN";
@@ -82,14 +88,17 @@ export default function PricingFillDetailsModal({
 
   return (
     <>
-      {open && (
-        <button
-          type="button"
-          aria-label="Close dialog"
-          onClick={() => onOpenChange(false)}
-          className="fixed inset-0 z-40 border-0 bg-black/35 p-0 supports-backdrop-filter:backdrop-blur-sm"
-        />
-      )}
+      {mounted &&
+        open &&
+        createPortal(
+          <button
+            type="button"
+            aria-label="Close dialog"
+            onClick={() => onOpenChange(false)}
+            className="fixed inset-0 z-40 border-0 bg-black/35 p-0 supports-backdrop-filter:backdrop-blur-sm"
+          />,
+          document.body,
+        )}
       <Dialog open={open} onOpenChange={onOpenChange} modal={false}>
       <DialogContent
         className="z-50 flex max-h-[min(90vh,800px)] w-[calc(100%-2rem)] max-w-[550px] flex-col gap-0 overflow-y-auto rounded-[20px] border-none bg-white p-0 text-neutral-900 shadow-2xl sm:max-w-[550px]"

@@ -1,5 +1,14 @@
-const raw = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/api";
-const API_BASE = String(raw).replace(/\/+$/, "");
+function getApiBase(): string {
+  const raw =
+    process.env.NEXT_PUBLIC_APP_API_ENDPOINT ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    "http://localhost:8080/api";
+  let base = String(raw).replace(/\/+$/, "");
+  if (/\/app$/i.test(base)) {
+    base = base.replace(/\/app$/i, "");
+  }
+  return base;
+}
 
 function resolveTenantFromHostname(hostname: string) {
   const rawHost = String(hostname || "").trim().toLowerCase();
@@ -52,12 +61,32 @@ function attachTenantHeader(headers: Record<string, string>) {
   }
 }
 
+export async function fetchData(
+  endpoint: string,
+): Promise<Record<string, unknown>> {
+  try {
+    const response = await fetch(`${getApiBase()}/${endpoint}`, {
+      cache: "no-store",
+      headers: (() => {
+        const h: Record<string, string> = {};
+        attachTenantHeader(h);
+        return h;
+      })(),
+    });
+    return response.json() as Promise<Record<string, unknown>>;
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Internal Server Error!";
+    return { success: false, message };
+  }
+}
+
 export const postData = async function (
   endpoint: string,
   data: unknown,
 ): Promise<Record<string, unknown>> {
   try {
-    const response = await fetch(`${API_BASE}/${endpoint}`, {
+    const response = await fetch(`${getApiBase()}/${endpoint}`, {
       method: "POST",
       headers: (() => {
         const h: Record<string, string> = { "Content-Type": "application/json" };

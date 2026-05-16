@@ -1,17 +1,17 @@
-import { enterprisePlan, plans as configPlans } from "../utils/config";
+import { plans } from "../utils/config";
 
 export const initialState = {};
 
 const PRICING_PLAN_DISCOUNT = 0;
 
 export const buildInitialState = function (state, skipPlan = false) {
-  const plans = buildPlans(state.coachId, skipPlan);
+  const plansList = buildPlans(state.coachId, skipPlan);
   const currency = detectCurrency();
   return {
     noOfMonths: 1,
     selectedPlanCode: "",
     currency,
-    plans,
+    plans: plansList,
     referredBy: state.referredBy,
     coachId: state.coachId,
     currentPlanCode: state.currentPlanCode ?? null,
@@ -25,17 +25,19 @@ export const buildInitialState = function (state, skipPlan = false) {
 };
 
 const buildPlans = function (coachId, skipPlan) {
-  const filtered = coachId
-    ? configPlans.filter((item) => (skipPlan ? item.id !== 1 : true))
-    : configPlans;
-  return [...filtered, enterprisePlan];
+  if (coachId) {
+    return plans.filter((item) => (skipPlan ? item.id !== 1 : true));
+  }
+  return plans;
 };
 
 const detectCurrency = function () {
-  const href =
+  const currentLocationStr =
     typeof window !== "undefined" ? window.location.href : "";
-  // USD only on explicit international routes — "expert" appears in many INR pages (e.g. /experts/pricing, find-experts).
-  if (/\/intl(\/|$|\?|#)/i.test(href) || /\bcurrency=usd\b/i.test(href)) {
+  if (
+    currentLocationStr.includes("expert") ||
+    currentLocationStr.includes("intl")
+  ) {
     return "USD";
   }
   return "INR";

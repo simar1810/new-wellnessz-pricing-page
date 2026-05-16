@@ -19,7 +19,7 @@ export const PARTNER_LOGO_FILES = [
 
 const TrustedPartners = () => {
   return (
-    <section className="w-full px-4 pb-10 sm:px-8 sm:pb-12 lg:px-14 lg:pb-20">
+    <section className="w-full pb-10 sm:pb-12 lg:pb-20 max-md:-translate-y-13 md:-translate-y-22">
       <div className="mx-auto flex w-full flex-col items-center justify-center gap-4">
         <p
           className="mb-1 text-center font-semibold tracking-normal text-[#03632C]"

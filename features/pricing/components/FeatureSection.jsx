@@ -9,15 +9,15 @@ import { cn } from "@/lib/utils";
 /** Same Brand feature art as experts pricing (`/experts/pricing`). */
 const VISUALS = [
   {
-    src: "/images/Brand-4.png",
+    src: "/images/Brand-2.jpg",
     alt: "WellnessZ nutrition and coaching platform",
   },
   {
-    src: "/images/Brand-2.png",
+    src: "/images/Brand-3.jpg",
     alt: "WellnessZ client progress and tracking",
   },
   {
-    src: "/images/Brand-3.png",
+    src: "/images/Brand-4.jpg",
     alt: "WellnessZ appointments and sessions",
   },
 ];

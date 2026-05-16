@@ -14,16 +14,13 @@ export default function Home() {
   return (
     <main className="min-h-dvh scroll-smooth bg-white font-lato text-neutral-900 antialiased">
       <HeroPricing />
-      <div className="-mt-8 md:-mt-14">
-        <TrustedPartners/>
-      </div>
+      <TrustedPartners/>
       <FeatureSection />
       <div className="-mt-8 md:-mt-14">
         <FeatureQuickLinks />
       </div>
       <PricingSection />
       <TestimonialShowcase
-        testimonialsLabel="View all testimonials"
         testimonialsHref="/testimonials"
         videos={PRICING_TESTIMONIAL_VIDEOS}
       />
