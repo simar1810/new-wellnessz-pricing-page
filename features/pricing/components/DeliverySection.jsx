@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const faqs = [
   {
@@ -31,43 +34,20 @@ const faqs = [
   },
 ];
 
-const appMockups = [
-  {
-    src: "/images/pricing/mockups/Mock-2.png",
-    alt: "WellnessZ app meals and recipes screen",
-  },
-  {
-    src: "/images/pricing/mockups/Mock-3.png",
-    alt: "WellnessZ app progress screen",
-  },
-];
+const FAQ_SECTION_IMAGE = "/images/FAQ Section.png";
 
 function BrandAppMockup() {
   return (
-    <div className="relative -mx-8 flex min-h-[600px] w-[calc(100%+4rem)] items-center justify-center overflow-visible px-8">
-      <div className="absolute h-[540px] w-[540px] rounded-full bg-[#67BC2A]/15 blur-3xl" />
-
-      <div className="relative flex w-full max-w-[640px] items-center justify-center">
-        {appMockups.map((mockup, index) => (
-          <div
-            key={mockup.src}
-            className={`relative aspect-[9/19.5] w-[58%] max-w-[280px] sm:w-[52%] ${
-              index === 0
-                ? "translate-x-10 rotate-[-5deg] sm:translate-x-16"
-                : "-translate-x-10 translate-y-10 rotate-[5deg] sm:-translate-x-16"
-            }`}
-          >
-            <Image
-              src={mockup.src}
-              alt={mockup.alt}
-              fill
-              sizes="(max-width: 768px) 58vw, 280px"
-              className="object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
-      </div>
+    <div className="relative flex w-full items-center justify-center">
+      <Image
+        src={FAQ_SECTION_IMAGE}
+        alt="WellnessZ progress dashboard on laptop and meals screen on mobile"
+        width={2400}
+        height={1792}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="h-auto w-full max-w-[720px] object-contain rounded-2xl"
+        priority
+      />
     </div>
   );
 }
@@ -81,7 +61,7 @@ export default function DeliverySection() {
         <h2 className="mb-10 text-center text-2xl font-semibold text-[#0F1F26] md:mb-12 md:text-3xl">
           Questions asked by Coaches
         </h2>
-        <div className="grid items-center gap-12 md:grid-cols-2">
+        <div className="grid items-start gap-12 md:grid-cols-2">
           <BrandAppMockup />
 
           <div className="rounded-2xl bg-gray-50 p-8 md:p-10">
@@ -120,6 +100,15 @@ export default function DeliverySection() {
                 );
               })}
             </div>
+            <Link
+              href="#pricing-plans"
+              className={cn(
+                buttonVariants({ variant: "default", size: "default" }),
+                "mt-8 flex h-12 w-full items-center justify-center rounded-xl border border-black/10 bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/80 hover:shadow-sm hover:text-[#1B5E20] md:h-12 md:text-base",
+              )}
+            >
+              Start 14-day free trial
+            </Link>
           </div>
         </div>
       </div>

@@ -43,7 +43,6 @@ export default function RootLayout({
         <BrandingProvider>
           <div className="flex min-h-dvh flex-col">
             <div className="flex-1">{children}</div>
-            <Footer />
           </div>
         </BrandingProvider>
         <Toaster position="top-center" />
