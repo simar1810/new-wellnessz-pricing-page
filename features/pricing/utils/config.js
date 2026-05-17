@@ -69,7 +69,7 @@ export const plans = [
   {
     id: 1,
     code: "basic",
-    title: "BASIC",
+    title: "Basic Plan",
     description:
       "For solo coaches starting structured coaching. Run your coaching practice cleanly without advanced automation.",
     bestFor:
