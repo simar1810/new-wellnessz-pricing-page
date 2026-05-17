@@ -1,17 +1,44 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useHasMounted } from "@/lib/use-has-mounted";
+import { useEffect, useRef } from "react";
 
-const HERO_HIGHLIGHTS = [
-  "Food database",
-  "Diet plan builder",
-  "Client progress report",
-  "Appointment scheduling",
-  "Habit tracking",
-  "Workout library",
-];
+const HERO_POSTER_SRC = "/images/hero/hero-main-secondary.png";
+const HERO_VIDEO_SRC = "/mp4/pricing/pricing-hero.mp4";
+
+function pauseAndMuteVideos(root) {
+  root?.querySelectorAll("video").forEach((video) => {
+    video.pause();
+    video.muted = true;
+  });
+}
 
 const HeroPricing = function () {
+  const hasMounted = useHasMounted();
+  const videoSectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = videoSectionRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          pauseAndMuteVideos(section);
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative w-full p-4">
       <div className="relative mx-auto max-w-[1400px] rounded-[20px] bg-linear-to-br text-center text-white md:rounded-[40px] pt-16  md:pt-24">
@@ -49,7 +76,8 @@ const HeroPricing = function () {
         </div>
       </div>
       <div
-        id="pricing-hero-media"
+        ref={videoSectionRef}
+        id="pricing-hero-video"
         className="w-full translate-y-[-130px] scroll-mt-24 px-4 md:translate-y-[-230px] md:scroll-mt-32"
       >
         <div
@@ -58,14 +86,26 @@ const HeroPricing = function () {
             after:absolute after:inset-0 after:rounded-[inherit] after:border-2 after:border-[#D9D9D9] after:content-[''] after:rotate-3 after:-z-10
           "
         >
-          <Image
-            fill
-            priority
-            src="/images/hero/hero-main-secondary.png"
-            alt="WellnessZ app — built for coaches, trainers, dietitians, and wellness professionals"
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, 768px"
-          />
+          {hasMounted ? (
+            <video
+              className="h-full w-full object-contain"
+              src={HERO_VIDEO_SRC}
+              poster={HERO_POSTER_SRC}
+              controls
+              controlsList="nodownload"
+              playsInline
+              preload="metadata"
+            />
+          ) : (
+            <Image
+              fill
+              priority
+              src={HERO_POSTER_SRC}
+              alt="WellnessZ app — built for coaches, trainers, dietitians, and wellness professionals"
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+          )}
         </div>
       </div>
     </section>

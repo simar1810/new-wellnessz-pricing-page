@@ -17,7 +17,7 @@ const VISUALS = [
     alt: "WellnessZ client progress and tracking",
   },
   {
-    src: "/images/Brand-4.jpg",
+    src: "/images/Brand-4.png",
     alt: "WellnessZ appointments and sessions",
   },
 ];

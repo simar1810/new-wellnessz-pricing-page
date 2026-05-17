@@ -83,10 +83,11 @@ export const plans = [
       "Group challenges",
       "Activity tracker",
       "Client progress tracking",
-      "Access to a food data base for easier meal planning",
-      "Group nudges only (same reminder to all clients)",
+      "Access to 28,000+ ICMR & NIN-verified food database",
+      "Group nudges only",
     ],
-    buttonText: (renewal) => (renewal ? "Renew Now" : "Start your 14 day free trial"),
+    buttonText: (renewal) =>
+      renewal ? "Renew Now" : "Start your 14 day free trial",
     billingText: (months) =>
       months === 1 ? "Billed Monthly" : "Billed Yearly",
     originalPrice: (months, currency) => {
@@ -102,13 +103,13 @@ export const plans = [
     },
     discountedPrice: (months, currency, discountPercentage) => {
       if (months === 1 && currency === "INR") {
-        return (499 - (499 * discountPercentage * 0.01)).toFixed(0);
+        return (499 - 499 * discountPercentage * 0.01).toFixed(0);
       } else if (months === 12 && currency === "INR") {
-        return (4_990 - (4_990 * discountPercentage * 0.01)).toFixed(0);
+        return (4_990 - 4_990 * discountPercentage * 0.01).toFixed(0);
       } else if (months === 1 && currency === "USD") {
-        return (19 - (19 * discountPercentage * 0.01)).toFixed(0);
+        return (19 - 19 * discountPercentage * 0.01).toFixed(0);
       } else if (months === 12 && currency === "USD") {
-        return (189 - (189 * discountPercentage * 0.01)).toFixed(0);
+        return (189 - 189 * discountPercentage * 0.01).toFixed(0);
       }
     },
   },
@@ -120,20 +121,24 @@ export const plans = [
     description:
       "For full-time coaches scaling beyond manual effort. Built for personalisation, accuracy, and higher client volume.",
     bestFor:
-      "Coaches managing 40+ clients who want to save time and scale without burnout. One retained client covers the entire monthly cost.",
+      "Coaches managing 40+ clients who want to save time and scale without burnout.",
     features: [
-      "Everything in Basic Plan",
-      "Up to 120 active clients",
-      "Personalised habit-based nudges (per client)",
+      "Everything in the Basic Plan",
+      "Up to 120 clients",
+      "Add your own recipes",
+      "Workout session analytics",
+      "In-app feed",
+      "Health Metric Pro",
+      "AI Health Agent Jia",
+      "Offline attendance tracking",
+      "Personalized habit-based nudges for each client",
       "AI-powered health journaling",
-      "Access to 28,000+ ICMR & NIN verified food database",
-      "Advanced calorie & macro tracking",
-      "Pre-built condition-based meal plans",
-      "Pre-built goal-based workout plans",
-      "Offline attendance tracking (clinics, group meets)",
-      "Team management (assistants, junior coaches)",
+      "Access to 28,000+ ICMR & NIN-verified food database",
+      "Advanced calorie and macro tracking using TDEE Calculator",
+      "Offline attendance tracking",
     ],
-    buttonText: (renewal) => (renewal ? "Renew Now" : "Start your 14 day free trial"),
+    buttonText: (renewal) =>
+      renewal ? "Renew Now" : "Start your 14 day free trial",
     billingText: (months) =>
       months === 1 ? "Billed Monthly" : "Billed Yearly",
     originalPrice: (months, currency) => {
@@ -149,13 +154,13 @@ export const plans = [
     },
     discountedPrice: (months, currency, discountPercentage = 0) => {
       if (currency === "INR" && months === 1) {
-        return (999 - (999 * discountPercentage * 0.01)).toFixed(0);
+        return (999 - 999 * discountPercentage * 0.01).toFixed(0);
       } else if (currency === "INR" && months === 12) {
-        return (9990 - (9990 * discountPercentage * 0.01)).toFixed(0);
+        return (9990 - 9990 * discountPercentage * 0.01).toFixed(0);
       } else if (currency === "USD" && months === 1) {
-        return (29 - (29 * discountPercentage * 0.01)).toFixed(0);
+        return (29 - 29 * discountPercentage * 0.01).toFixed(0);
       } else if (currency === "USD" && months === 12) {
-        return (279 - (279 * discountPercentage * 0.01)).toFixed(0);
+        return (279 - 279 * discountPercentage * 0.01).toFixed(0);
       }
     },
   },
@@ -165,18 +170,17 @@ export const plans = [
     title: "OWN YOUR COACHING APP",
     description: "For established coaches building a long-term brand",
     bestFor:
-      "Coaches with 50+ active clients, clinics, or hybrid online + offline practices. This is not an app upgrade. This is ownership of your coaching business.",
-    buttonText: (renewal) => (renewal ? "Renew Now" : "Start your 14 day free trial"),
+      "Coaches with 50+ active clients, clinics, or hybrid online + offline practices.",
+    buttonText: (renewal) =>
+      renewal ? "Renew Now" : "Start your 14 day free trial",
     billingText: (months) =>
       months === 1 ? "Billed Monthly" : "Billed Yearly",
     features: [
-      "All Pro plan features",
+      "All Pro Plan features",
       "Your app published on the Play Store / App Store",
       "Your logo, colors, and brand identity",
-      "Zero WellnessZ branding for clients",
-      "Complete web panel",
-      "Higher client trust & retention",
-      "Strong switching cost for clients",
+      "Powered by WellnessZ branding for clients",
+      "Zee Coach listing on the Zeefit marketplace to get more leads",
     ],
     discountedPrice: (months, currency) => {
       if (months === 1 && currency === "INR") {
