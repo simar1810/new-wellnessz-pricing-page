@@ -87,7 +87,7 @@ export const plans = [
       "Group nudges only",
     ],
     buttonText: (renewal) =>
-      renewal ? "Renew Now" : "Start your 14 day free trial",
+      renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
       months === 1 ? "Billed Monthly" : "Billed Yearly",
     originalPrice: (months, currency) => {
@@ -138,7 +138,7 @@ export const plans = [
       "Offline attendance tracking",
     ],
     buttonText: (renewal) =>
-      renewal ? "Renew Now" : "Start your 14 day free trial",
+      renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
       months === 1 ? "Billed Monthly" : "Billed Yearly",
     originalPrice: (months, currency) => {
@@ -172,7 +172,7 @@ export const plans = [
     bestFor:
       "Coaches with 50+ active clients, clinics, or hybrid online + offline practices.",
     buttonText: (renewal) =>
-      renewal ? "Renew Now" : "Start your 14 day free trial",
+      renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
       months === 1 ? "Billed Monthly" : "Billed Yearly",
     features: [

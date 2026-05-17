@@ -1,9 +1,9 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
+import { useHasMounted } from "@/lib/use-has-mounted";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useHasMounted } from "@/lib/use-has-mounted";
 import { useEffect, useRef } from "react";
 
 const HERO_POSTER_SRC = "/images/hero/hero-main-secondary.png";
@@ -71,7 +71,7 @@ const HeroPricing = function () {
               "mb-12 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base translate-y-5",
             )}
           >
-            Start your 14-day free trial
+            Start 14-day free trial
           </a>
         </div>
       </div>

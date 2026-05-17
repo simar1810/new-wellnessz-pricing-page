@@ -45,7 +45,7 @@ export default function PlanDurationSelection() {
         </button>
       </div>
       <p className="mt-2 text-center text-xs font-medium text-[#82C04F] md:text-sm">
-        Save Upto 42% with yearly billing
+        Save Upto 50% with yearly billing
       </p>
     </div>
   );
