@@ -40,8 +40,8 @@ const HeroPricing = function() {
   }, []);
 
   return (
-    <section className="relative w-full p-4 short:mb-10">
-      <div className="relative mx-auto max-w-[1400px] rounded-[20px] bg-linear-to-br pb-0 pt-16 text-center text-white md:rounded-[40px] md:pt-24 short:pb-16">
+    <section className="relative mb-10 w-full p-4 md:mb-0">
+      <div className="relative mx-auto max-w-[1400px] rounded-[20px] bg-linear-to-br pb-16 pt-16 text-center text-white md:rounded-[40px] md:pb-0 md:pt-24">
         <Image
           fill
           priority
@@ -49,7 +49,7 @@ const HeroPricing = function() {
           className="z-0 rounded-[20px] object-cover md:rounded-[20px]"
           alt=""
         />
-        <div className="relative z-1 flex h-[60vh] -translate-y-8 flex-col items-center justify-center leading-tight md:h-[75vh] md:-translate-y-14 short:h-auto short:min-h-0 short:translate-y-0 short:py-6">
+        <div className="relative z-1 flex h-auto min-h-0 translate-y-0 flex-col items-center justify-center py-6 leading-tight md:h-[75vh] md:-translate-y-14 md:py-0">
           <h1 className="max-w-[22ch] px-2 text-[26px] font-bold tracking-tight md:max-w-[32ch] md:text-[44px] lg:text-[52px]">
             India&apos;s leading client management platform for Health &amp;
             Wellness Professionals
@@ -68,7 +68,7 @@ const HeroPricing = function() {
             href="#pricing-plans"
             className={cn(
               buttonVariants({ variant: "default", size: "default" }),
-              "mb-12 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base short:mb-0",
+              "mb-0 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:mb-12 md:h-14 md:text-base",
             )}
           >
             Start 14-day free trial
@@ -78,7 +78,7 @@ const HeroPricing = function() {
       <div
         ref={videoSectionRef}
         id="pricing-hero-video"
-        className="w-full -translate-y-[80px] scroll-mt-24 px-4 md:-translate-y-[150px] md:scroll-mt-32 short:translate-y-0 short:my-6"
+        className="my-6 w-full translate-y-0 scroll-mt-24 px-4 md:my-0 md:-translate-y-[150px] md:scroll-mt-32"
       >
         <div
           className="
