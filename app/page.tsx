@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="min-h-dvh scroll-smooth bg-white font-lato text-neutral-900 antialiased">
       <HeroPricing />
-      <div className="-mt-8 md:-mt-14">
+      <div className="-mt-8 md:-mt-14 short:mt-0">
         <TrustedPartners/>
       </div>
       <FeatureSection />

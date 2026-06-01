@@ -97,14 +97,17 @@ export default function SalesContactForm({ plans = [], trigger }) {
           <button className="text-[#67BC2A] font-semibold hover:underline">Contact Us</button>
         )}
       </DialogTrigger>
-      <DialogContent className="background-blur-0 max-w-[840px] p-0 gap-y-0">
-        <DialogTitle className="p-4 text-[28px] !font-semibold text-center border-b border-gray-100">
-          {step === "thank-you" && "Success!"}
-          {step === "contact-us" && "Contact Us!"}
-        </DialogTitle>
+      <DialogContent className="background-blur-0 max-w-[calc(100%-2rem)] gap-0 p-0 ring-0 sm:max-w-[840px]">
+        {step === "thank-you" ? (
+          <DialogTitle className="border-b border-gray-100 px-5 py-4 text-center text-2xl !font-semibold sm:p-4 sm:text-[28px]">
+            Success!
+          </DialogTitle>
+        ) : (
+          <DialogTitle className="sr-only">Contact Sales</DialogTitle>
+        )}
 
         {step === "plan-selection" && (
-          <div className="grid grid-cols-2 gap-4 p-8">
+          <div className="grid grid-cols-2 gap-4 p-5 sm:p-8">
             {plans.map((plan) => (
               <PlanDescription
                 key={plan.id}
@@ -119,7 +122,7 @@ export default function SalesContactForm({ plans = [], trigger }) {
         )}
 
         {step === "contact-form" && (
-          <div className="p-8 space-y-6">
+          <div className="space-y-6 p-5 sm:p-8">
             <div className="flex items-center justify-between mb-4">
               {plans.length > 1 && (
                 <button
@@ -210,7 +213,7 @@ export default function SalesContactForm({ plans = [], trigger }) {
         )}
 
         {step === "thank-you" && (
-          <div className="p-12 text-center space-y-6">
+          <div className="space-y-6 p-8 text-center sm:p-12">
             <div className="w-20 h-20 bg-green-100 text-[#67BC2A] rounded-full flex items-center justify-center mx-auto mb-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
