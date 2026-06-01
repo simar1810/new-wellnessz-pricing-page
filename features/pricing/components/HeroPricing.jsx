@@ -40,7 +40,7 @@ const HeroPricing = function() {
   }, []);
 
   return (
-    <section className="relative w-full p-4">
+    <section className="relative w-full p-4 short:mb-10">
       <div className="relative mx-auto max-w-[1400px] rounded-[20px] bg-linear-to-br pb-0 pt-16 text-center text-white md:rounded-[40px] md:pt-24 short:pb-16">
         <Image
           fill
