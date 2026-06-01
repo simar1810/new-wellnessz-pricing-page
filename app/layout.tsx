@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Lato, Poppins } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import BrandingProvider from "@/context/branding";
+import MetaPixel from "@/components/MetaPixel";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
@@ -26,6 +27,9 @@ export const metadata: Metadata = {
   title: "WellnessZ — Pricing",
   description:
     "India's leading healthtech platform for health and wellness professionals. Diet plans, client progress, appointments, and reports in one place.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -40,10 +44,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-dvh antialiased" suppressHydrationWarning>
+        <MetaPixel />
         <BrandingProvider>
           <div className="flex min-h-dvh flex-col">
             <div className="flex-1">{children}</div>
-            <Footer />
           </div>
         </BrandingProvider>
         <Toaster position="top-center" />

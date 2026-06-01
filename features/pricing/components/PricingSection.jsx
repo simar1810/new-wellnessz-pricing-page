@@ -4,10 +4,13 @@ import {
   usePricingPageContext,
 } from "../state/PricingSectionContext";
 import PlanBasic from "./PlanBasic";
+import CouponCode from "./CouponCode";
 import PlanEnterprise from "./PlanEnterprise";
+import OurClients from "./OurClients";
 import PlanPro from "./PlanPro";
 import PlanSales from "./PlanSales";
 import PlanDurationSelection from "./PlanDurationSelection";
+import { enterprisePlan } from "../utils/config";
 import { Suspense } from "react";
 
 export default function PricingSection({ skipPlan, currentPlanCode } = {}) {
@@ -24,8 +27,6 @@ export default function PricingSection({ skipPlan, currentPlanCode } = {}) {
 
 function Container() {
   const { plans, noOfMonths } = usePricingPageContext();
-  const tierPlans = plans.filter((p) => p.code !== "enterprise");
-  const enterprise = plans.find((p) => p.code === "enterprise");
 
   return (
     <div>
@@ -39,13 +40,15 @@ function Container() {
             grows.
           </p>
         </div>
+        <CouponCode />
         <PlanDurationSelection />
         <div
           className={cn(
-            "mb-8 grid grid-cols-1 items-stretch gap-6 md:grid-cols-3 md:gap-6",
+            "mb-8 grid grid-cols-1 items-stretch gap-6 md:gap-6",
+            plans.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3",
           )}
         >
-          {tierPlans.map((plan) => {
+          {plans.map((plan) => {
             const Component = getPlanCardComponent(plan.code);
             if (!Component) return null;
             return (
@@ -53,11 +56,10 @@ function Container() {
             );
           })}
         </div>
-        {enterprise ? (
-          <div className="mb-10 md:mb-12">
-            <PlanEnterprise plan={enterprise} />
-          </div>
-        ) : null}
+        <div className="mb-10 md:mb-12">
+          <PlanEnterprise plan={enterprisePlan} />
+          <OurClients />
+        </div>
       </div>
     </div>
   );

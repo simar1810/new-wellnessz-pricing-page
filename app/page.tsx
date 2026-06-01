@@ -23,7 +23,6 @@ export default function Home() {
       </div>
       <PricingSection />
       <TestimonialShowcase
-        testimonialsLabel="View all testimonials"
         testimonialsHref="/testimonials"
         videos={PRICING_TESTIMONIAL_VIDEOS}
       />

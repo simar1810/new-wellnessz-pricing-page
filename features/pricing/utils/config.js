@@ -14,10 +14,10 @@ export const features = [
       "Create diet plans faster and assign them to clients based on their goals, preferences, and lifestyle.",
     ],
     subFeatures: [
-      "Custom diet plans",
-      "Verified food database",
-      "Macro & calorie tracking",
-      "Meal reminders",
+      "AI diet plans in minutes",
+      "28,000+ verified foods",
+      "Smart Nutrition Tracking",
+      "Meal Follow-up Nudges",
     ],
     imageSide: "left",
   },
@@ -28,10 +28,10 @@ export const features = [
       "Monitor client results, habits, workouts, and nutrition from one simple dashboard.",
     ],
     subFeatures: [
-      "Progress reports",
-      "Goal tracking",
-      "Habit updates",
-      "Workout progress",
+      "Client transformation reports",
+      "Track weight, BMI, and fitness goals",
+      "Monitor daily habits",
+      "Workout performance tracking",
     ],
     imageSide: "right",
   },
@@ -65,8 +65,6 @@ export const featureQuickLinks = [
   "Team management",
 ];
 
-const yearlyAt42Percent = (monthly) => Math.round(monthly * 12 * 0.58);
-
 export const plans = [
   {
     id: 1,
@@ -91,37 +89,37 @@ export const plans = [
     buttonText: (renewal) =>
       renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
-      months === 12 ? "Billed yearly" : "Billed monthly",
+      months === 1 ? "Billed Monthly" : "Billed Yearly",
     originalPrice: (months, currency) => {
-      if (months === 1 && currency === "INR") return 499;
-      if (months === 12 && currency === "INR") return 499 * 12;
-      if (months === 1 && currency === "USD") return 10;
-      if (months === 12 && currency === "USD") return 120;
-    },
-    discountedPrice: (months, currency, discountPercentage = 0) => {
-      const d = Number(discountPercentage) || 0;
-      const factor = 1 - d * 0.01;
       if (months === 1 && currency === "INR") {
-        return (499 * factor).toFixed(0);
+        return 499;
+      } else if (months === 12 && currency === "INR") {
+        return 5_988;
+      } else if (months === 1 && currency === "USD") {
+        return 19;
+      } else if (months === 12 && currency === "USD") {
+        return 228;
       }
-      if (months === 12 && currency === "INR") {
-        return (yearlyAt42Percent(499) * factor).toFixed(0);
-      }
-      if (months === 1 && currency === "USD") {
-        return (10 * factor).toFixed(0);
-      }
-      if (months === 12 && currency === "USD") {
-        return (Math.round(120 * 0.58) * factor).toFixed(0);
+    },
+    discountedPrice: (months, currency, discountPercentage) => {
+      if (months === 1 && currency === "INR") {
+        return (499 - 499 * discountPercentage * 0.01).toFixed(0);
+      } else if (months === 12 && currency === "INR") {
+        return (4_990 - 4_990 * discountPercentage * 0.01).toFixed(0);
+      } else if (months === 1 && currency === "USD") {
+        return (19 - 19 * discountPercentage * 0.01).toFixed(0);
+      } else if (months === 12 && currency === "USD") {
+        return (189 - 189 * discountPercentage * 0.01).toFixed(0);
       }
     },
   },
   {
     id: 2,
     code: "pro",
-    title: "Pro Plan",
     badge: "Most Popular",
+    title: "PRO",
     description:
-      "For full-time coaches scaling beyond manual effort. Built for personalization, accuracy, and higher client volume.",
+      "For full-time coaches scaling beyond manual effort. Built for personalisation, accuracy, and higher client volume.",
     bestFor:
       "Coaches managing 40+ clients who want to save time and scale without burnout.",
     features: [
@@ -136,77 +134,75 @@ export const plans = [
       "Personalized habit-based nudges for each client",
       "AI-powered health journaling",
       "Access to 28,000+ ICMR & NIN-verified food database",
-      "Advanced calorie and macro tracking using TD Calculator",
+      "Advanced calorie and macro tracking using TDEE Calculator",
+      "Offline attendance tracking",
     ],
     buttonText: (renewal) =>
       renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
-      months === 12 ? "Billed yearly" : "Billed monthly",
+      months === 1 ? "Billed Monthly" : "Billed Yearly",
     originalPrice: (months, currency) => {
-      if (months === 1 && currency === "INR") return 999;
-      if (months === 12 && currency === "INR") return 999 * 12;
-      if (months === 1 && currency === "USD") return 18;
-      if (months === 12 && currency === "USD") return 216;
+      if (months === 1 && currency === "INR") {
+        return 999;
+      } else if (months === 12 && currency === "INR") {
+        return 11_988;
+      } else if (months === 1 && currency === "USD") {
+        return 29;
+      } else if (months === 12 && currency === "USD") {
+        return 348;
+      }
     },
     discountedPrice: (months, currency, discountPercentage = 0) => {
-      const d = Number(discountPercentage) || 0;
-      const factor = 1 - d * 0.01;
-      if (months === 1 && currency === "INR") {
-        return (999 * factor).toFixed(0);
-      }
-      if (months === 12 && currency === "INR") {
-        return (yearlyAt42Percent(999) * factor).toFixed(0);
-      }
-      if (months === 1 && currency === "USD") {
-        return (18 * factor).toFixed(0);
-      }
-      if (months === 12 && currency === "USD") {
-        return (Math.round(216 * 0.58) * factor).toFixed(0);
+      if (currency === "INR" && months === 1) {
+        return (999 - 999 * discountPercentage * 0.01).toFixed(0);
+      } else if (currency === "INR" && months === 12) {
+        return (9990 - 9990 * discountPercentage * 0.01).toFixed(0);
+      } else if (currency === "USD" && months === 1) {
+        return (29 - 29 * discountPercentage * 0.01).toFixed(0);
+      } else if (currency === "USD" && months === 12) {
+        return (279 - 279 * discountPercentage * 0.01).toFixed(0);
       }
     },
   },
   {
     id: 3,
     code: "iosBranded",
-    title: "Branded App",
-    description:
-      "For established coaches building a long-term brand.",
+    title: "OWN YOUR COACHING APP",
+    description: "For established coaches building a long-term brand",
     bestFor:
       "Coaches with 50+ active clients, clinics, or hybrid online + offline practices.",
-    positioningLine:
-      "This is not an app upgrade. This is ownership of your coaching business.",
     buttonText: (renewal) =>
       renewal ? "Renew Now" : "Start 14-day free trial",
     billingText: (months) =>
-      months === 12 ? "Billed yearly" : "Billed monthly",
+      months === 1 ? "Billed Monthly" : "Billed Yearly",
     features: [
-      "All Pro plan features",
+      "All Pro Plan features",
       "Your app published on the Play Store / App Store",
       "Your logo, colors, and brand identity",
       "Powered by WellnessZ branding for clients",
       "Zee Coach listing on the Zeefit marketplace to get more leads",
     ],
-    discountedPrice: (months, currency, discountPercentage = 0) => {
-      const d = Number(discountPercentage) || 0;
-      const factor = 1 - d * 0.01;
+    discountedPrice: (months, currency) => {
       if (months === 1 && currency === "INR") {
-        return (3999 * factor).toFixed(0);
-      }
-      if (months === 12 && currency === "INR") {
-        return (yearlyAt42Percent(3999) * factor).toFixed(0);
-      }
-      if (months === 1 && currency === "USD") {
-        return (50 * factor).toFixed(0);
-      }
-      if (months === 12 && currency === "USD") {
-        return (Math.round(600 * 0.58) * factor).toFixed(0);
+        return 3_999;
+      } else if (months === 12 && currency === "INR") {
+        return 23_990;
+      } else if (months === 1 && currency === "USD") {
+        return 69;
+      } else if (months === 12 && currency === "USD") {
+        return 599;
       }
     },
     originalPrice: (months, currency) => {
-      if (months === 1 && currency === "INR") return 3999;
-      if (months === 12 && currency === "INR") return 3999 * 12;
-      if (months === 1 && currency === "USD") return 50;
-      if (months === 12 && currency === "USD") return 600;
+      if (months === 1 && currency === "INR") {
+        return 3_999;
+      } else if (months === 12 && currency === "INR") {
+        return 47_988;
+      } else if (months === 1 && currency === "USD") {
+        return 69;
+      } else if (months === 12 && currency === "USD") {
+        return 828;
+      }
     },
   },
 ];
@@ -215,10 +211,9 @@ export const enterprisePlan = {
   id: 5,
   code: "enterprise",
   title: "ENTERPRISE PLAN",
-  description:
-    "For organizations that need scale, advanced control, and custom workflows.",
+  description: "For clinics, large coaching teams & high-volume practices",
   bestFor:
-    "Organizations managing large client volumes, multiple coaches, and custom workflows.",
+    "Built for organisations managing large client volumes, multiple coaches, and custom workflows. Enterprise is not a fixed plan — it’s a tailored system designed around how your practice actually runs.",
   features: [
     "Gyms & fitness studios",
     "Corporate wellness providers",
@@ -232,8 +227,24 @@ export const enterprisePlan = {
   ],
   buttonText: () => "Contact Sales",
   billingText: () => "",
-  originalPrice: () => undefined,
-  discountedPrice: () => undefined,
+  originalPrice: (months) => {
+    switch (months) {
+      case 1:
+        return 9990;
+      case 12:
+        return 11988;
+      default:
+        return 9990;
+    }
+  },
+  discountedPrice: (months) => {
+    switch (months) {
+      case 1:
+        return 1200;
+      default:
+        return 1300;
+    }
+  },
 };
 
 export const freeTier = {

@@ -27,11 +27,6 @@ export const PRICING_TESTIMONIAL_VIDEOS = [
     stripLabel: "Interface",
   },
   {
-    src: pricingTestimonialVideoSrc("video 2.mp4"),
-    name: "Client management story",
-    stripLabel: "Client Wins",
-  },
-  {
     src: pricingTestimonialVideoSrc("testmonial fitly.mp4"),
     name: "Fitly coach growth story",
     stripLabel: "Fitly Coach",
