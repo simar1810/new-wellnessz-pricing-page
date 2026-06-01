@@ -4,11 +4,18 @@ import { updateNoOfMonths } from "../state/reducer";
 import { Switch } from "@/components/ui/switch";
 
 export default function PlanDurationSelection() {
-  const { dispatch, noOfMonths } = usePricingPageContext();
+  const { dispatch, discountPercentage, noOfMonths } = usePricingPageContext();
 
   const setMonths = function (months) {
     dispatch(updateNoOfMonths(months));
   };
+
+  const BASE_YEARLY_SAVINGS_PERCENTAGE = 42;
+  const hasCouponDiscount = discountPercentage > 0;
+  const shouldShowSavings = true;
+  const savingsToDisplay = hasCouponDiscount
+    ? discountPercentage
+    : BASE_YEARLY_SAVINGS_PERCENTAGE;
 
   return (
     <div className="relative mb-12 mt-4 md:mt-8">
@@ -38,7 +45,7 @@ export default function PlanDurationSelection() {
         </button>
       </div>
       <p className="mt-2 text-center text-xs font-medium text-[#82C04F] md:text-sm">
-        Save Upto 42% with yearly billing
+        Save Upto 50% with yearly billing
       </p>
     </div>
   );

@@ -48,7 +48,6 @@ function pauseAndMuteVideos(root) {
 export default function TestimonialShowcase({
   videos,
   testimonialsHref = "/testimonials",
-  testimonialsLabel = "View all testimonials",
 }) {
   const hasMounted = useHasMounted();
   const n = videos?.length ?? 0;
@@ -172,12 +171,6 @@ export default function TestimonialShowcase({
           )}
         >
           Start 14-day free trial
-        </Link>
-        <Link
-          href={testimonialsHref}
-          className="text-sm font-semibold text-white underline decoration-white/50 underline-offset-4 transition hover:decoration-white md:text-base"
-        >
-          {testimonialsLabel}
         </Link>
       </div>
       <h3 className="sr-only">Video testimonials from coaches</h3>

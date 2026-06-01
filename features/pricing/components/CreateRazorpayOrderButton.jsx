@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { updateIsAdmin, updateUIState } from "../state/reducer";
+import { selectPlanCode, updateIsAdmin, updateUIState } from "../state/reducer";
 import { buildRazorpayOptions, createRazorpayOrder, loadScript } from "../utils/razorpay";
 import { useState } from "react";
 import { getPlanCodeForPlanType } from "../utils/helpers";
@@ -28,35 +28,35 @@ export default function CreateRazorpayOrderButton({ children, planId }) {
     if (stage === "order-creating") {
       return;
     }
-    if (state.coachId) {
-      await handleRazorpay(state.coachId, true);
-    }
-
-    if (!state.coachId) {
-      openLeadModal();
-    }
+    // `coachId` in context comes from URL (`?coachId=` / route params) for referrals
+    // or “view as coach” — it is not the purchaser’s Mongo `_id`. Razorpay-autopay
+    // must use the buyer’s `_id` from `signin-pricing`, so always collect details first.
+    openLeadModal();
   };
 
   const handleRazorpay = async function (coachId, isAdmin) {
     try {
       dispatch(updateUIState("order-creating"));
+      dispatch(selectPlanCode(planId));
       const order = await createRazorpayOrder({
         ...state,
         coachId,
         planId,
         isAdmin,
+        noOfMonths: state.noOfMonths ?? 1,
       });
 
       await Promise.resolve(loadScript());
       const redirectUrl = "https://app.wellnessz.in/login";
       const options = buildRazorpayOptions(order?.data, {
+        checkout: order?.checkout,
         onSuccess: async () => {
           if (state.appliedCoupon)
             await postData(
               `app/coupons/coach/coupons?coachId=${coachId}`,
               {
                 code: state.appliedCoupon,
-                planCode: getPlanCodeForPlanType(state.selectedPlanCode),
+                planCode: getPlanCodeForPlanType(planId),
               },
             );
           window.location.href = `/thank-you?redirect=${encodeURIComponent(redirectUrl)}`;
@@ -89,7 +89,13 @@ export default function CreateRazorpayOrderButton({ children, planId }) {
         data,
       );
 
-      if (response.status_code !== 200) throw new Error(response?.message);
+      if (response.status_code !== 200) {
+        throw new Error(
+          String(
+            response?.message || response?.error || "Something went wrong",
+          ),
+        );
+      }
       dispatch(updateIsAdmin(!response?.data?.isNewRegistration));
 
       const isAdmin = !response?.data?.isNewRegistration;
@@ -121,9 +127,10 @@ export default function CreateRazorpayOrderButton({ children, planId }) {
             <div className="flex border-l border-gray-200">
               <button
                 type="button"
-                onClick={() =>
-                  handleRazorpay(response?.data?.user?._id, isAdmin)
-                }
+                onClick={async () => {
+                  toast.dismiss(t.id);
+                  await handleRazorpay(response?.data?.user?._id, isAdmin);
+                }}
                 className="rounded-r-lg px-5 text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 Continue

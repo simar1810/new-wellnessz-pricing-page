@@ -1,19 +1,13 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
+import { useHasMounted } from "@/lib/use-has-mounted";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useHasMounted } from "@/lib/use-has-mounted";
 import { useEffect, useRef } from "react";
 
-const HERO_HIGHLIGHTS = [
-  "Food database",
-  "Diet plan builder",
-  "Client progress report",
-  "Appointment scheduling",
-  "Habit tracking",
-  "Workout library",
-];
+const HERO_POSTER_SRC = "/images/hero/hero-main-secondary.png";
+const HERO_VIDEO_SRC = "/mp4/pricing/pricing-hero.mp4";
 
 function pauseAndMuteVideos(root) {
   root?.querySelectorAll("video").forEach((video) => {
@@ -22,7 +16,7 @@ function pauseAndMuteVideos(root) {
   });
 }
 
-const HeroPricing = function () {
+const HeroPricing = function() {
   const hasMounted = useHasMounted();
   const videoSectionRef = useRef(null);
 
@@ -70,19 +64,6 @@ const HeroPricing = function () {
             dietitians, fitness trainers &amp; wellness coaches
           </div>
 
-          {/* <ul
-            className="mb-6 flex max-w-4xl flex-wrap justify-center gap-2 px-3 md:mb-8"
-            aria-label="Platform highlights"
-          >
-            {HERO_HIGHLIGHTS.map((label) => (
-              <li key={label}>
-                <span className="inline-block rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white/95 backdrop-blur-sm md:text-xs">
-                  {label}
-                </span>
-              </li>
-            ))}
-          </ul> */}
-
           <a
             href="#pricing-plans"
             className={cn(
@@ -90,7 +71,7 @@ const HeroPricing = function () {
               "mb-12 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base short:mb-0",
             )}
           >
-            Start your 14-day free trial
+            Start 14-day free trial
           </a>
         </div>
       </div>
@@ -101,21 +82,29 @@ const HeroPricing = function () {
       >
         <div
           className="
-            relative mx-auto max-w-3xl aspect-video overflow-hidden rounded-2xl border-4 border-[#67BC2A] bg-black
+            relative mx-auto max-w-3xl aspect-video overflow-hidden rounded-2xl border-4 border-[#67BC2A] bg-white
             after:absolute after:inset-0 after:rounded-[inherit] after:border-2 after:border-[#D9D9D9] after:content-[''] after:rotate-3 after:-z-10
           "
         >
           {hasMounted ? (
             <video
-              className="h-full w-full object-cover"
-              src="/mp4/pricing/pricing-hero.mp4"
+              className="h-full w-full object-contain"
+              src={HERO_VIDEO_SRC}
+              poster={HERO_POSTER_SRC}
               controls
               controlsList="nodownload"
               playsInline
-              preload="auto"
+              preload="metadata"
             />
           ) : (
-            <div className="h-full w-full bg-black" aria-hidden />
+            <Image
+              fill
+              priority
+              src={HERO_POSTER_SRC}
+              alt="WellnessZ app — built for coaches, trainers, dietitians, and wellness professionals"
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
           )}
         </div>
       </div>

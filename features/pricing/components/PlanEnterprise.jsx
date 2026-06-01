@@ -1,7 +1,12 @@
 import { cn } from "@/lib/utils";
 import { selectPlanCode } from "../state/reducer";
 import { usePricingPageContext } from "../state/PricingSectionContext";
-import SalesContactForm from "./SalesContactForm";
+
+const SALES_WHATSAPP_URL =
+  "https://wa.me/919915911056?text=" +
+  encodeURIComponent(
+    "Hi WellnessZ Team,\nI’m interested in the Enterprise Plan and would like to know more.",
+  );
 
 export default function PlanEnterprise({ plan }) {
   const { selectedPlanCode, dispatch, coachId } = usePricingPageContext();
@@ -83,17 +88,15 @@ export default function PlanEnterprise({ plan }) {
           onClick={(e) => e.stopPropagation()}
           onKeyDown={(e) => e.stopPropagation()}
         >
-          <SalesContactForm
-            plans={[plan]}
-            trigger={
-              <button
-                type="button"
-                className="min-w-[200px] rounded-full bg-white px-10 py-5 text-[20px] font-bold text-[#2D5A27] shadow-lg transition-all hover:bg-gray-100 active:scale-95"
-              >
-                {buttonLabel}
-              </button>
-            }
-          />
+          <a
+            href={SALES_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex min-w-[200px] items-center justify-center rounded-full bg-white px-10 py-5 text-[20px] font-bold text-[#2D5A27] shadow-lg transition-all hover:bg-gray-100 active:scale-95"
+          >
+            {buttonLabel}
+          </a>
         </div>
       </div>
     </article>
