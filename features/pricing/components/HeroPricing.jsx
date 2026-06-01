@@ -22,7 +22,7 @@ function pauseAndMuteVideos(root) {
   });
 }
 
-const HeroPricing = function () {
+const HeroPricing = function() {
   const hasMounted = useHasMounted();
   const videoSectionRef = useRef(null);
 
@@ -47,7 +47,7 @@ const HeroPricing = function () {
 
   return (
     <section className="relative w-full p-4">
-      <div className="relative mx-auto max-w-[1400px] rounded-[20px] bg-linear-to-br pb-0 pt-16 text-center text-white md:rounded-[40px] md:pt-24">
+      <div className="relative mx-auto max-w-[1400px] rounded-[20px] bg-linear-to-br pb-0 pt-16 text-center text-white md:rounded-[40px] md:pt-24 short:pb-16">
         <Image
           fill
           priority
@@ -55,9 +55,10 @@ const HeroPricing = function () {
           className="z-0 rounded-[20px] object-cover md:rounded-[20px]"
           alt=""
         />
-        <div className="relative z-1 flex h-[60vh] -translate-y-8 flex-col items-center justify-center leading-tight md:h-[75vh] md:-translate-y-14">
+        <div className="relative z-1 flex h-[60vh] -translate-y-8 flex-col items-center justify-center leading-tight md:h-[75vh] md:-translate-y-14 short:h-auto short:min-h-0 short:translate-y-0 short:py-6">
           <h1 className="max-w-[22ch] px-2 text-[26px] font-bold tracking-tight md:max-w-[32ch] md:text-[44px] lg:text-[52px]">
-            India&apos;s leading client management platform for Health &amp; Wellness Professionals
+            India&apos;s leading client management platform for Health &amp;
+            Wellness Professionals
           </h1>
           <p className="mx-auto mb-5 mt-4 max-w-[60ch] px-2 text-sm text-white/90 md:mb-6 md:mt-6 md:max-w-[70ch] md:text-lg">
             Manage diet plans, client progress, appointments, reminders, and
@@ -65,8 +66,8 @@ const HeroPricing = function () {
             and scale faster.
           </p>
           <div className="mx-5 mb-5 inline-block max-w-3xl rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-medium leading-snug backdrop-blur-md sm:px-6 md:mb-6 md:text-sm">
-            Trusted by 7000+ health coaches • 28,000+ verified foods • Built
-            for dietitians, fitness trainers &amp; wellness coaches
+            Trusted by 7000+ health coaches • 28,000+ verified foods • Built for
+            dietitians, fitness trainers &amp; wellness coaches
           </div>
 
           {/* <ul
@@ -86,7 +87,7 @@ const HeroPricing = function () {
             href="#pricing-plans"
             className={cn(
               buttonVariants({ variant: "default", size: "default" }),
-              "mb-12 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base",
+              "mb-12 h-12 rounded-xl bg-white px-8 text-sm font-semibold text-[#1B5E20] hover:bg-white/90 hover:text-[#1B5E20] sm:w-auto md:h-14 md:text-base short:mb-0",
             )}
           >
             Start your 14-day free trial
@@ -96,7 +97,7 @@ const HeroPricing = function () {
       <div
         ref={videoSectionRef}
         id="pricing-hero-video"
-        className="w-full -translate-y-[80px] scroll-mt-24 px-4 md:translate-y-[-150px] md:scroll-mt-32"
+        className="w-full -translate-y-[80px] scroll-mt-24 px-4 md:-translate-y-[150px] md:scroll-mt-32 short:translate-y-0 short:my-6"
       >
         <div
           className="

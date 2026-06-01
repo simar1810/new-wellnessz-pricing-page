@@ -52,7 +52,8 @@ export default function PlanEnterprise({ plan }) {
               </ul>
             </div>
 
-            {Array.isArray(plan.deliverables) && plan.deliverables.length > 0 ? (
+            {Array.isArray(plan.deliverables) &&
+              plan.deliverables.length > 0 ? (
               <div>
                 <p className="mb-3 text-xs font-bold uppercase tracking-wider text-white/80">
                   What will you get
